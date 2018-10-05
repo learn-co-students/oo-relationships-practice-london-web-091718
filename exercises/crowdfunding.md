@@ -6,6 +6,27 @@ You are building the next big crowdfunding site. Users can make projects and fun
   - a project will have a pledge goal amount
   - a user can both create and back projects, so a user will have multiple connections to projects based on those different roles
 
+has_many, belongs_to
+school ---< student
+
+has many through always needs a join!
+
+student --< lesson >--- teacher
+Lesson.all.select do |l|
+  l.student_id = self
+end.map {|l| l.teacher_id}
+
+
+lessons table:
+id | student_id | teacher_id
+1        1           1
+2        1           1
+3        1           2
+
+
+
+
+
 Write out the relationships using has_many, belongs_to and has_many_through. Write out a schema that shows what these tables might look like in a database. Where would the foreign keys live? Then *build out methods reflecting all these relationships.* What method can I call on a user to find other users who have backed his/her projects, etc?
 
 #### User
